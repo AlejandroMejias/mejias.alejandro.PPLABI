@@ -1,0 +1,59 @@
+# depslib dependency file v1.0
+1602686861 source:c:\users\aleja\utn\primer cuatrimestre\programacion_laboratorio 1\lavadero\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"auto.h"
+	"marca.h"
+	"color.h"
+
+1602687079 source:c:\users\aleja\utn\primer cuatrimestre\programacion_laboratorio 1\lavadero\color.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"color.h"
+
+1602684827 source:c:\users\aleja\utn\primer cuatrimestre\programacion_laboratorio 1\lavadero\marca.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"marca.h"
+
+1602687055 source:c:\users\aleja\utn\primer cuatrimestre\programacion_laboratorio 1\lavadero\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"auto.h"
+	"auxiliares.h"
+	"servicio.h"
+	"marca.h"
+	"color.h"
+
+1602682051 c:\users\aleja\utn\primer cuatrimestre\programacion_laboratorio 1\lavadero\servicio.h
+
+1602682236 source:c:\users\aleja\utn\primer cuatrimestre\programacion_laboratorio 1\lavadero\servicio.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"servicio.h"
+
+1602686492 c:\users\aleja\utn\primer cuatrimestre\programacion_laboratorio 1\lavadero\auto.h
+	"marca.h"
+	"color.h"
+
+1602678748 c:\users\aleja\utn\primer cuatrimestre\programacion_laboratorio 1\lavadero\auxiliares.h
+
+1602682325 source:c:\users\aleja\utn\primer cuatrimestre\programacion_laboratorio 1\lavadero\auxiliares.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"auxiliares.h"
+
+1602681414 c:\users\aleja\utn\primer cuatrimestre\programacion_laboratorio 1\lavadero\marca.h
+
+1602681803 c:\users\aleja\utn\primer cuatrimestre\programacion_laboratorio 1\lavadero\color.h
+
