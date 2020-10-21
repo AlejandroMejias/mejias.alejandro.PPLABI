@@ -57,3 +57,97 @@
 
 1602681803 c:\users\aleja\utn\primer cuatrimestre\programacion_laboratorio 1\lavadero\color.h
 
+1603285194 source:c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"auto.h"
+	"marca.h"
+	"color.h"
+	"auxiliares.h"
+	"cliente.h"
+
+1603283879 c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\auto.h
+	"marca.h"
+	"color.h"
+	"cliente.h"
+
+1603283995 c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\marca.h
+
+1603283960 c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\color.h
+
+1603289686 source:c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\auxiliares.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"auxiliares.h"
+	"auto.h"
+
+1603283902 c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\auxiliares.h
+
+1603283780 source:c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\color.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"color.h"
+
+1603283802 source:c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\marca.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"marca.h"
+
+1603283822 source:c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\servicio.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"servicio.h"
+
+1603284019 c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\servicio.h
+
+1603289560 source:c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"auto.h"
+	"auxiliares.h"
+	"servicio.h"
+	"marca.h"
+	"color.h"
+	"trabajo.h"
+	"fecha.h"
+	"cliente.h"
+
+1603284043 c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\trabajo.h
+	"fecha.h"
+
+1603283976 c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\fecha.h
+
+1603283843 source:c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\trabajo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"auto.h"
+	"servicio.h"
+	"fecha.h"
+	"trabajo.h"
+	"auxiliares.h"
+	"trabajo.h"
+
+1603283940 c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\cliente.h
+
+1603283760 source:c:\users\aleja\onedrive\escritorio\mejias.alejandro.pplabi\lavadero\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"cliente.h"
+

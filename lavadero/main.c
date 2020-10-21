@@ -6,6 +6,8 @@
 #define TAM_MARCA 5
 #define TAM_COLOR 5
 #define TAM_AUTO 10
+#define TAM_CLIENTE 10
+#define TAM_TRABAJO 100
 
 /*Bibliotecas*/
 #include "auto.h"
@@ -13,102 +15,257 @@
 #include "servicio.h"
 #include "marca.h"
 #include "color.h"
+#include "trabajo.h"
+#include "fecha.h"
+#include "cliente.h"
+
 int main()
 {
 
     char opcion;
+    int respuesta;
+    int banderaAltas = 1;
+    int banderaTrabajos = 1;
+    char patente[8];
+    int idColor;
+    int idMarca;
+    int modelo;
+    int cliente;
+    int idAuto = 99;
+
     eAuto Auto[TAM_AUTO];
     eMarca Marca[TAM_MARCA];
     eColor Color[TAM_COLOR];
     eServicio Servicio[TAM_SERVICIO];
+    eTrabajo Trabajo[TAM_TRABAJO];
+    eFecha Fecha[TAM_TRABAJO];
+    eCliente Cliente[TAM_CLIENTE];
 
+    inicializarAuto(Auto,TAM_AUTO);
+    inicializarTrabajo(Trabajo,TAM_TRABAJO);
     marcasPorDefecto(Marca,TAM_MARCA);
     coloresPorDefecto(Color,TAM_COLOR);
     serviciosPorDefecto(Servicio,TAM_SERVICIO);
-    inicializarAuto(Auto,TAM_AUTO);
-    autosPorDefecto(Auto,TAM_AUTO,Marca,TAM_MARCA,Color,TAM_COLOR);
+    clientesPorDefecto(Cliente,TAM_CLIENTE);
 
+
+
+    if(autosPorDefecto(Auto,TAM_AUTO,Marca,TAM_MARCA,Color,TAM_COLOR,Cliente,TAM_CLIENTE) == 0)
+    {
+        idAuto = 104;
+    }
 
     do
     {
         opcion = menu();
-    /*
-        AUTO:::
-        • id
-        • patente
-        • idMarca Validar
-        idColor Validar
-        modelo(año de fabricación)
-
-    */
 
         switch(opcion)
         {
             case 'a':
-                /*altaAuto(Auto,TAM_AUTO,Marca,TAM_MARCA,Color,TAM_COLOR);*/
+                system("cls");
+                printf("        ****       Alta de auto        *****");
+                printf("\n-----------------------------------------------\n\n");
+                respuesta = capturarCadena(patente);
+                while(respuesta == -1)
+                {
+                    printf("\n\nERROR! Ingrese un formato de patente correcto.Ejem, XR5JYU6:\n\n");
+                    system("pause");
+                    system("cls");
+                    respuesta = capturarCadena(patente);
+                }
+                mostrarColores(Color,TAM_COLOR);
+                respuesta = capturarColor(&idColor);
+                while(respuesta == -1)
+                {
+                    printf("\n\nERROR! Ingrese nuevamente un id existente...\n\n");
+                    system("pause");
+                    mostrarColores(Color,TAM_COLOR);
+                    respuesta = capturarColor(&idColor);
+                }
+                mostrarMarca(Marca,TAM_MARCA);
+                respuesta = capturarMarca(&idMarca);
+                while(respuesta == -1)
+                {
+                    printf("\nERROR! Ingrese nuevamente un id existente...\n\n");
+                    system("pause");
+                    mostrarMarca(Marca,TAM_MARCA);
+                    respuesta = capturarMarca(&idMarca);
+                }
+
+                respuesta = capturarModelo(&modelo);
+                while(respuesta == -1)
+                {
+                    printf("\nERROR! El a%co no puede ser mayor a 2020...\n\n",164);
+                    system("pause");
+                    respuesta = capturarModelo(&modelo);
+                }
+                mostrarCliente(Cliente,TAM_CLIENTE);
+                respuesta = capturarCliente(&cliente);
+                while(respuesta == -1)
+                {
+                    printf("\nERROR! Ingrese nuevamente un id existente...\n\n");
+                    system("pause");
+                    mostrarCliente(Cliente,TAM_CLIENTE);
+                    respuesta = capturarCliente(&cliente);
+                }
+                respuesta = altaAutos(Auto,TAM_AUTO,patente,idColor,idMarca,modelo,idAuto,cliente);
+                idAuto++;
+
+                if(respuesta == 0)
+                {
+                    printf("\nAlta exitosa...");
+                    banderaAltas = 0;
+                }
+                else
+                {
+                    printf("\nHubo un problema con el alta del auto");
+                }
+                break;
+            case 'b':
+                if(banderaAltas == 0)
+                {
+                    system("cls");
+                    respuesta = modificarAuto(Auto,TAM_AUTO,Color,TAM_COLOR);
+                    if(respuesta == 0)
+                    {
+                        printf("\n\nModificacion exitosa...");
+                    }
+                    else
+                    {
+                        printf("\n\nNo fue posible efectuar la modificacion, verifique los datos ingresados...\n\n");
+                    }
+                }
+                else
+                {
+                    printf("\n\nNo puedes ingresar a esta opcion sin haber ingresado al menos un auto");
+                }
+
+                break;
+            case 'c':
+                if(banderaAltas == 0)
+                {
+                    system("cls");
+                    respuesta = eliminarAuto(Auto,TAM_AUTO);
+                    if(respuesta == 0)
+                    {
+                        printf("\n\nBaja exitosa...");
+                    }
+                    else
+                    {
+                        printf("\n\nNo se completo la baja del auto");
+                    }
+                }
+                else
+                {
+                    printf("\n\nNo puedes ingresar a esta opcion sin haber ingresado al menos un auto");
+                }
+
                 break;
             case 'd':
-                mostrarAutos(Auto,TAM_AUTO,Marca,TAM_MARCA,Color,TAM_COLOR);
+                if(banderaAltas == 0)
+                {
+                    system("cls");
+                    mostrarAutos(Auto,TAM_AUTO,Marca,TAM_MARCA,Color,TAM_COLOR,Cliente,TAM_CLIENTE);
+                }
+                else
+                {
+                    printf("\n\nNo puedes ingresar a esta opcion sin haber ingresado al menos un auto");
+                }
+
                 break;
             case 'e':
                 mostrarMarca(Marca,TAM_MARCA);
                 break;
             case 'f':
-                system("cls");
                 mostrarColores(Color,TAM_COLOR);
-                printf("\n\n");
-                system("pause");
                 break;
             case 'g':
+                system("cls");
                 mostrarServicio(Servicio,TAM_SERVICIO);
                 break;
+            case 'h':
+                system("cls");
+                respuesta = altaTrabajo(Trabajo,TAM_TRABAJO,Auto,TAM_AUTO,Servicio,TAM_SERVICIO);
+                if(respuesta == 0)
+                {
+                    printf("\n\nAlta de trabajo exitosa");
+                    banderaTrabajos = 0;
+                }
+                else
+                {
+                    printf("\n\nNo fue posible completar el alta de trabajo!");
+                }
+                break;
+            case 'i':
+                if(banderaTrabajos == 0)
+                {
+                    mostrarTrabajos(Trabajo,TAM_TRABAJO,Servicio,TAM_SERVICIO,Fecha);
+                }
+                else
+                {
+                    printf("\n\nNo puedes mostrar los trabajos sin antes ingresar al menos un trabajo");
+                }
+                break;
+            case 'j':
+                if(banderaAltas == 0)
+                {
+                    system("cls");
+                    opcion = menuInformes();
+
+                    switch(opcion)
+                    {
+                    case 'k':
+                        system("cls");
+                        autosPorColor(Auto,TAM_AUTO,Marca,TAM_MARCA,Color,TAM_COLOR);
+                        break;
+                    case 'l':
+                        system("cls");
+                        autosPorMarca(Auto,TAM_AUTO,Marca,TAM_MARCA,Color,TAM_COLOR);
+                        break;
+                    case 'm':
+                        system("cls");
+                        autosViejos(Auto,TAM_AUTO,Marca,TAM_MARCA,Color,TAM_COLOR);
+                        break;
+                    case 'n':
+                        system("cls");
+                        separarPorMarca(Auto,TAM_AUTO,Marca,TAM_MARCA,Color,TAM_COLOR);
+                        break;
+                    case 'o':
+                        system("cls");
+                        contar_MarcaColor(Auto,TAM_AUTO,Marca,TAM_MARCA,Color,TAM_COLOR);
+                        break;
+                    case 'p':
+                        system("cls");
+                        marcasMasElegidas(Auto,TAM_AUTO,Marca,TAM_MARCA,Color,TAM_COLOR);
+                        break;
+                    case 'x':
+                        system("cls");
+                        printf("\nSaliendo del sistema...");
+                        break;
+                    default:
+                        system("cls");
+                        printf("\nOpcion invalida.Sera devuelto al menu principal\n\n");
+                    }
+                }
+                else
+                {
+                    printf("\n\nNo puedes ingresar a esta opcion sin haber ingresado al menos un auto");
+                }
+                break;
+            case 'x':
+                system("cls");
+                printf("\nSaliendo del sistema...");
+                break;
+            default:
+                system("cls");
+                printf("\nOpcion invalida.Se mostrara el menu nuevamente\n\n");
         }
         fflush(stdin);
+        printf("\n\n");
+        system("pause");
         system("cls");
-    }while(opcion != 'x');
+    }
+    while(opcion != 'x');
 
     return 0;
 }
-/*
-
-    Fecha:
-• dia
-• mes
-• año
-
-Marca:
-• id (comienza en 1000)
-• descripción (máx 20 caracteres)
-Color:
-• id (comienza en 5000)
-• nombreColor(máx 20 caracteres)
-
-Auto:
-• id
-• patente
-• idMarca Validar
-• idColor Validar
-• modelo(año de fabricación)
-
-Servicio:
-• id(comienza en 20000)
-• descripción (máxim
-o 25 caracteres)
-• precio
-
-Trabajo:
-• id (autoincremental)
-• patente (debe existir) Validar
-• idServicio (debe existir) Validar
-• fecha ( Validar día, mes y año )
-
-DATOS PREVIOS:
-
-Los arrays de marca, color y lavado deberán ser hardcodeados.
-Marcas (Renault, Fiat, Ford, Chevrolet, Peugeot)
-Colores (Negro, Blanco, Gris, Rojo, Azul)
-Lavados (Lavado: $250, Pulido: $300, Encerado: $400, Completo: $600)
-
-
-
-*/

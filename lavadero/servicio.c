@@ -20,7 +20,7 @@ void serviciosPorDefecto(eServicio servicio[], int tam_servicio)
 
     for(i = 0; i < tam_servicio; i++)
     {
-        servicio[i].idServicio = idServicio[i];
+        servicio[i].id = idServicio[i];
         strcpy(servicio[i].descripcion,descripcion[i]);
         servicio[i].precio = precio[i];
     }
@@ -28,22 +28,19 @@ void serviciosPorDefecto(eServicio servicio[], int tam_servicio)
 
 int mostrarServicio(eServicio servicio[], int tam_servicio)
 {
-    system("cls");
     int i;
     int retorno = -1;
 
-    printf("        ****       Listado de servicios        *****");
-    printf("\n-------------------------------------------------\n\n");
+    printf("      ****       Listado de servicios        *****");
+    printf("\n    ----------------------------------------------\n\n");
     printf("ID          Descripcion     Precio \n\n");
     if(servicio != NULL && tam_servicio > 0)
     {
-        retorno = 0;
         for(i = 0; i < tam_servicio; i++)
         {
-            printf("%d  %12s          %.2f\n",servicio[i].idServicio,servicio[i].descripcion,servicio[i].precio);
+            printf("%d  %12s          %.2f\n",servicio[i].id,servicio[i].descripcion,servicio[i].precio);
         }
+        retorno = 0;
     }
-    printf("\n\n");
-    system("pause");
     return retorno;
 }
